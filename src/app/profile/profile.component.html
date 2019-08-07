@@ -1,0 +1,24 @@
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <ul  *ngFor="let user of users" class="list-unstyled">
+        <li>{{ user.login }}</li>
+        <li>
+          <img src="{{user.avatar_url}}" alt="" height="50" width="50">
+        </li>
+        <button (click)=showName(user.login)>Show More</button>
+      
+      </ul>
+    </div>
+    <div class="col-md-6">
+        <ul  *ngFor="let repo of repos" class="list-unstyled">
+            <li>{{ repo.name }}</li>
+           
+          
+          </ul>
+
+    </div>
+  </div>
+</div>
+
