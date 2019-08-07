@@ -1,24 +1,36 @@
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
 
+    <a class="navbar-brand" href="#">Github Clone</a>
+  
+  </nav>
 <div class="container">
-  <div class="row">
-    <div class="col-md-6">
-      <ul  *ngFor="let user of users" class="list-unstyled">
-        <li>{{ user.login }}</li>
-        <li>
-          <img src="{{user.avatar_url}}" alt="" height="50" width="50">
-        </li>
-        <button (click)=showName(user.login)>Show More</button>
-      
-      </ul>
-    </div>
-    <div class="col-md-6">
-        <ul  *ngFor="let repo of repos" class="list-unstyled">
-            <li>{{ repo.name }}</li>
-           
-          
-          </ul>
+  <div class="row m-4">
+    
+    <div class="col-md-6 ">
+      <input type="text" class="form-control" [(ngModel)]="username" name="username" placeholder="Search git user by username..." (keyup)="onKey()">
+
+         <!-- showing list of github user -->
+
+      <ul  *ngFor="let user of users" class="list-unstyled bg-info text-white">
+            <li class="media" (click)=showName(user.login)>
+                <img class="mr-3" src="{{user.avatar_url}}"  class="img-thumbnail" alt="{{ user.login }}"  height="100" width="100">
+                <div class="media-body">
+                  <div class="p-4 ">
+                      <span>username:</span> <h2 class=" text-capitalize d-inline"> {{ user.login }}</h2>
+                  </div>
+                </div>
+              </li>
+        </ul>
 
     </div>
+    <!-- showing list of repositories -->
+    <div class="col-md-6 mt-1">
+        <ul  *ngFor="let repo of repos" class="list-unstyled list-group">
+            <li class="list-group-item list-group-item-primary ">{{ repo.name }}</li>
+        </ul>
+
+      </div>
+ 
   </div>
 </div>
 
