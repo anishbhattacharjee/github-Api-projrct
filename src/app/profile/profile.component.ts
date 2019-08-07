@@ -11,20 +11,18 @@ import { map } from 'rxjs/operators';
 
 
 export class ProfileComponent implements OnInit {
-  users: any;
-  repos: any;
-  values: any;
-  search: any;
-  username: string;
+  users: Object;
+  repos: Object;
+ 
+  username: any;
+
   constructor(private profileservice: ProfileService) {
 
     this.profileservice.getUserlist().subscribe(p => {
       this.users  = p ;
-     //console.log(this.users);
+    // console.log(this.users);
 
     });
-
-
    }
 
   ngOnInit() {
@@ -32,23 +30,21 @@ export class ProfileComponent implements OnInit {
 
   }
 
+setUser(searchRes){
+this.users =searchRes.items;
 
+}
   onKey() {
-    this.profileservice.getSearchResult(this.username).subscribe(res => {
-
-      this.users = res.items;
-     // console.log(this.search);
-
-    } );
-
-
+    this.profileservice.getSearchResult(this.username).subscribe(res =>  this.setUser(res));
   }
 
+
+
   showName(data){
-    // console.log(data);
+   ;
     this.profileservice.getRepos(data).subscribe(t => {
       this.repos = t;
-      // console.log(this.repos);
+     
     });
 
   }

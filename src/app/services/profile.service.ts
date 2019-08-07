@@ -15,10 +15,10 @@ getUserlist(){
   return this.httpClient.get("https://api.github.com/users").pipe(map(res => res ));
 }
 
-  getRepos(d){
+  getRepos(d:any){
     return this.httpClient.get("https://api.github.com/users/" + d + '/repos').pipe(map(res => res ));
   }
-  getSearchResult(data){
+  getSearchResult(data:any){
     return this.httpClient.get("https://api.github.com/search/users?q=" + data).pipe(map(res => res ));
   }
 }
